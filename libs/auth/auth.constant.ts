@@ -8,4 +8,4 @@ export const authConstant = {
     CONNECTION_TIME_LIMIT: '10000', // msec
     CONNECTION_COUNT_LIMIT: '5',
   },
-}
+};

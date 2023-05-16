@@ -21,7 +21,8 @@
     "prisma:format": "yarn format --schema=libs/providers/prisma/schema.prisma",
     "prisma:migrate": "yarn prisma migrate dev --name init --schema=libs/providers/prisma/schema.prisma",
     "migrate:reset": "yarn migrate reset --schema=libs/providers/prisma/schema.prisma",
-    "prisma:studio": "yarn prisma studio --schema=libs/providers/prisma/schema.prisma"
+    "prisma:studio": "yarn prisma studio --schema=libs/providers/prisma/schema.prisma",
+    "prisma:gen": "yarn prisma generate --schema=libs/providers/prisma/schema.prisma"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",

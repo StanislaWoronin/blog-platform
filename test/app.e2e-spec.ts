@@ -22,13 +22,11 @@ describe('AppController (e2e)', () => {
   });
 
   it('', async () => {
-    const response = await request(server)
-      .post('/sa/users')
-      .send({
-        login: 'u',
-        password: ' us',
-        email: 'somemailmail.com'
-      });
+    const response = await request(server).post('/sa/users').send({
+      login: 'u',
+      password: ' us',
+      email: 'somemailmail.com',
+    });
     console.log(response.body);
   });
 });

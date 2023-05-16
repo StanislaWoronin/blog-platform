@@ -11,11 +11,11 @@ datasource db {
 }
 
 model User {
-  id                    String
+  id                    String @id @default(uuid())
   login                 String
   email                 String
   password              String
-  createdAt             DateTime               @default(now()) @map("created_at")
+  createdAt             String
   UserEmailConfirmation UserEmailConfirmation?
   UserBanInfo           UserBanInfo?
 }
@@ -31,6 +31,6 @@ model UserEmailConfirmation {
 model UserBanInfo {
   user      User     @relation(fields: [userId], references: [id])
   userId    String   @unique
-  banDate   DateTime @default(now()) @map("created_at")
+  banDate   String
   banReason String
 }

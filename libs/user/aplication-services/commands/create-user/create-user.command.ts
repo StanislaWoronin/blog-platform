@@ -1,5 +1,8 @@
-import { CreateUserDto } from "../dto/create-user.dto";
+import { CreateUserDto } from '../dto/create-user.dto';
 
 export class CreateUserCommand {
-  constructor(public readonly user: CreateUserDto, public readonly isSA: boolean) {}
+  constructor(
+    public readonly user: CreateUserDto,
+    public readonly isSA: boolean,
+  ) {}
 }

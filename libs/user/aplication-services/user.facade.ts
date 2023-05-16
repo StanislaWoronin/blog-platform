@@ -1,7 +1,7 @@
-import { Injectable } from "@nestjs/common";
-import { CommandBus, QueryBus } from "@nestjs/cqrs";
-import { CreateUserDto } from "./commands/dto/create-user.dto";
-import { CreateUserCommand, CreateUserCommandHandler } from "./commands";
+import { Injectable } from '@nestjs/common';
+import { CommandBus, QueryBus } from '@nestjs/cqrs';
+import { CreateUserDto } from './commands/dto/create-user.dto';
+import { CreateUserCommand, CreateUserCommandHandler } from './commands';
 
 @Injectable()
 export class UserFacade {
@@ -11,10 +11,14 @@ export class UserFacade {
   ) {}
 
   commands = {
-    createUser: (user: CreateUserDto, isSA: boolean) => this.createUser(user, isSA)
-  }
+    createUser: (user: CreateUserDto, isSA: boolean) =>
+      this.createUser(user, isSA),
+  };
 
   private createUser(user: CreateUserDto, isSA: boolean) {
-    return this.commandBus.execute<CreateUserCommand, CreateUserCommandHandler['execute']>(new CreateUserCommand(user, isSA))
+    return this.commandBus.execute<
+      CreateUserCommand,
+      CreateUserCommandHandler['execute']
+    >(new CreateUserCommand(user, isSA));
   }
 }
