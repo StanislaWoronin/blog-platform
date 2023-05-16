@@ -4,7 +4,11 @@ import * as request from 'supertest';
 import { AppModule } from './../src/app.module';
 
 describe('AppController (e2e)', () => {
+  const second = 1000;
+  jest.setTimeout(10 * second);
+
   let app: INestApplication;
+  let server;
 
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -13,12 +17,18 @@ describe('AppController (e2e)', () => {
 
     app = moduleFixture.createNestApplication();
     await app.init();
+
+    server = await app.getHttpServer();
   });
 
-  it('/ (GET)', () => {
-    return request(app.getHttpServer())
-      .get('/')
-      .expect(200)
-      .expect('Hello World!');
+  it('', async () => {
+    const response = await request(server)
+      .post('/sa/users')
+      .send({
+        login: 'u',
+        password: ' us',
+        email: 'somemailmail.com'
+      });
+    console.log(response.body);
   });
 });

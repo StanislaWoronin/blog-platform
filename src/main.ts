@@ -2,10 +2,34 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { Logger } from '@nestjs/common';
+import { BadRequestException, Logger, ValidationPipe } from "@nestjs/common";
+import { HttpExceptionFilter } from "../libs/exception-filters";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.useGlobalFilters(new HttpExceptionFilter());
+  app.useGlobalPipes(
+    new ValidationPipe({
+      transform: true,
+      stopAtFirstError: true,
+
+      exceptionFactory: (errorsMessages) => {
+        const errorsForResponse = [];
+
+        errorsMessages.forEach((e) => {
+          const keys = Object.keys(e.constraints);
+          errorsForResponse.push({
+            message: e.constraints[keys[0]],
+            field: e.property,
+          });
+        });
+
+        throw new BadRequestException(
+          errorsForResponse,
+        );
+      },
+    }),
+  );
   const configService = app.get(ConfigService);
   const port = configService.get<number>('PORT', 5000);
 
