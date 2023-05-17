@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigService } from '@nestjs/config';
 import { UserModule } from '../libs/user/user.module';
 import { SharedModule } from '../libs/shared/shared.module';
 import { DomainsModule } from './domains';

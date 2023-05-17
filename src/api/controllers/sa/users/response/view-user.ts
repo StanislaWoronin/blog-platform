@@ -1,6 +1,6 @@
 import { IBanInfoInterface, IUser } from '../../../../../../libs/user';
 
-export class UserResponse implements Omit<IUser, 'password'> {
+export class ViewUser implements Omit<IUser, 'password'> {
   id: string;
   login: string;
   email: string;
@@ -11,10 +11,7 @@ export class UserResponse implements Omit<IUser, 'password'> {
     banReason: string;
   };
 
-  static viewUser(
-    user: Partial<IUser>,
-    banInfo?: IBanInfoInterface,
-  ): UserResponse {
+  static viewUser(user: Partial<IUser>, banInfo?: IBanInfoInterface): ViewUser {
     if (!banInfo) {
       banInfo = {
         isBanned: false,
@@ -22,6 +19,7 @@ export class UserResponse implements Omit<IUser, 'password'> {
         banReason: null,
       };
     }
+
     return {
       id: user.id,
       login: user.login,

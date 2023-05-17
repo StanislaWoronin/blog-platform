@@ -5,15 +5,15 @@ import { PrismaClient } from '@prisma/client';
 import { UserEmailConfirmationAggregate } from '../../../domain/user-email-confirmation.aggregate';
 import { randomUUID } from 'crypto';
 import { getExpirationDate } from '../../../../shared/helpers';
-import { UserResponse } from '../../../../../src/api/controllers/sa/users/response/user.response';
+import { ViewUser } from '../../../../../src/api/controllers/sa/users/response';
 
 @CommandHandler(CreateUserCommand)
 export class CreateUserCommandHandler
-  implements ICommandHandler<CreateUserCommand, UserResponse>
+  implements ICommandHandler<CreateUserCommand, ViewUser>
 {
   private readonly prisma = new PrismaClient();
 
-  async execute({ user, isSA }: CreateUserCommand): Promise<UserResponse> {
+  async execute({ user, isSA }: CreateUserCommand): Promise<ViewUser> {
     const userAggregate = UserAggregate.create(user);
 
     const emailConfirmationAggregate = !isSA
@@ -32,7 +32,7 @@ export class CreateUserCommandHandler
       }),
     ]);
 
-    const _createdUser = UserResponse.viewUser(createdUser);
+    const _createdUser = ViewUser.viewUser(createdUser);
     return _createdUser;
   }
 }

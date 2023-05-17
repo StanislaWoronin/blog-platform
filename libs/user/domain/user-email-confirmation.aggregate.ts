@@ -8,7 +8,6 @@ export class UserEmailConfirmationAggregate
   isConfirmed = true;
   userId: string;
 
-
   static create(emailConfirmation?: Partial<IUserEmailConfirmationInterface>) {
     const _emailConfirmation = new UserEmailConfirmationAggregate();
     if (!emailConfirmation) {

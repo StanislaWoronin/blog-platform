@@ -4,11 +4,20 @@ import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { BadRequestException, Logger, ValidationPipe } from '@nestjs/common';
 import { HttpExceptionFilter } from '../libs/exception-filters';
-import { faker } from "@faker-js/faker";
-import { validationConstant } from "../libs/shared";
+import { faker } from '@faker-js/faker';
+import { validationConstant } from '../libs/shared';
+import { GlobalHTTPFilter } from '../libs/exception-filters/app.filter';
+import { exceptionFactory } from '../libs/exception-filters/exceptionFactory.function';
+import cookieParser from 'cookie-parser';
+import { useContainer } from 'class-validator';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  useContainer(app.select(AppModule), { fallbackOnErrors: true });
+  app.enableCors();
+  app.use(cookieParser());
+  // app.useGlobalPipes(new ValidationPipe({ transform: true, exceptionFactory: exceptionFactory }));
+  // app.useGlobalFilters(new GlobalHTTPFilter());
   app.useGlobalFilters(new HttpExceptionFilter());
   app.useGlobalPipes(
     new ValidationPipe({
