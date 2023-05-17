@@ -4,6 +4,8 @@ import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { BadRequestException, Logger, ValidationPipe } from '@nestjs/common';
 import { HttpExceptionFilter } from '../libs/exception-filters';
+import { faker } from "@faker-js/faker";
+import { validationConstant } from "../libs/shared";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

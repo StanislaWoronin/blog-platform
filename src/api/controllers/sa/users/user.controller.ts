@@ -1,8 +1,9 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { UserFacade } from '../../../../../libs/user/aplication-services';
 import { CreateUserDto } from './dto/create-user.dto';
+import { baseSaUrl } from "../../../../../libs/shared/endpoints";
 
-@Controller('sa/users')
+@Controller(baseSaUrl)
 export class UserController {
   constructor(private readonly userFacade: UserFacade) {}
 

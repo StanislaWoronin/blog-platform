@@ -25,6 +25,7 @@
     "prisma:gen": "yarn prisma generate --schema=libs/providers/prisma/schema.prisma"
   },
   "dependencies": {
+    "@faker-js/faker": "^8.0.1",
     "@nestjs/common": "^9.0.0",
     "@nestjs/config": "^2.3.1",
     "@nestjs/core": "^9.0.0",
