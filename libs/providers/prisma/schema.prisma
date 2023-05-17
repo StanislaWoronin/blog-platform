@@ -11,7 +11,7 @@ datasource db {
 }
 
 model User {
-  id                    String @id @default(uuid())
+  id                    String                 @id @default(uuid())
   login                 String
   email                 String
   password              String
@@ -29,8 +29,8 @@ model UserEmailConfirmation {
 }
 
 model UserBanInfo {
-  user      User     @relation(fields: [userId], references: [id])
-  userId    String   @unique
+  user      User   @relation(fields: [userId], references: [id])
+  userId    String @unique
   banDate   String
   banReason String
 }

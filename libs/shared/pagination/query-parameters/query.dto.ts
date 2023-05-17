@@ -1,7 +1,7 @@
 import { IsInt, IsOptional, Min } from 'class-validator';
 import { Type } from 'class-transformer';
 import { ApiProperty } from '@nestjs/swagger';
-import { giveSkipNumber } from "./helpers";
+import { giveSkipNumber } from './helpers';
 
 export class QueryDto {
   constructor() {

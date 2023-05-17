@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  NotFoundException,
+  Post,
+  Query,
+  UseGuards,
+} from '@nestjs/common';
 import { UserFacade } from '../../../../../libs/user/aplication-services';
 import { CreateUserDto } from './dto/create-user.dto';
 import { baseSaUrl, SaEndpoints } from '../../../../../libs/shared/endpoints';
@@ -14,7 +22,7 @@ export class UserController {
 
   @Post(SaEndpoints.create())
   async createUser(@Body() createUserDto: CreateUserDto) {
-    return await this.userFacade.commands.createUser(createUserDto, true);
+    return this.userFacade.commands.createUser(createUserDto, true);
   }
 
   @Get(SaEndpoints.getUsers())

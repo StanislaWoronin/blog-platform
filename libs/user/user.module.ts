@@ -2,9 +2,9 @@ import { Module, OnModuleInit } from '@nestjs/common';
 import { CommandBus, CqrsModule, QueryBus } from '@nestjs/cqrs';
 import { USER_COMMANDS_HANDLERS } from './aplication-services/commands';
 import { UserFacade } from './aplication-services';
-import { userFacadeFactory } from './aplication-services/providers/user-facade.factory';
+import { userFacadeFactory } from './providers/user-facade.factory';
 import { ProvidersModule } from '../providers/providers.module';
-import { USER_QUERIES_HANDLERS } from "./aplication-services/queries";
+import { USER_QUERIES_HANDLERS } from './aplication-services/queries';
 
 @Module({
   imports: [CqrsModule, ProvidersModule],

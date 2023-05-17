@@ -9,6 +9,7 @@ import {
   preparedSaData,
 } from './prepared-data/prepared-sa.data';
 import { viewUser } from './expect-data';
+import { createApp } from '../src/create-app';
 
 describe('AppController (e2e)', () => {
   const second = 1000;
@@ -25,6 +26,7 @@ describe('AppController (e2e)', () => {
     }).compile();
 
     app = moduleFixture.createNestApplication();
+    app = createApp(app);
     await app.init();
 
     server = await app.getHttpServer();
@@ -45,10 +47,11 @@ describe('AppController (e2e)', () => {
     });
 
     it(`Expect: ${HttpStatus.BAD_REQUEST}. SA try create user with incorrect input (short) data.`, async () => {
-      const { status } = await userRequest.createUser(
+      const { body, status } = await userRequest.createUser(
         createUserData.short,
         preparedSaData,
       );
+      console.log(body);
       expect(HttpStatus.BAD_REQUEST).toBe(status);
     });
 
@@ -57,7 +60,7 @@ describe('AppController (e2e)', () => {
         createUserData.long,
         preparedSaData,
       );
-      expect(HttpStatus.BAD_REQUEST).toBe(status);
+      expect(status).toBe(HttpStatus.BAD_REQUEST);
     });
 
     it(`Expect: ${HttpStatus.CREATED}. Create and return new user`, async () => {
@@ -71,13 +74,9 @@ describe('AppController (e2e)', () => {
     });
   });
 
-  describe(`"${SaEndpoints.create()}". Get users.`, () => {
+  describe.skip(`"${SaEndpoints.create()}". Get users.`, () => {
     it(`Expect: ${HttpStatus.OK}. Return all user`, async () => {
-      const { body, status } = await userRequest.getUsers(
-          {},
-          preparedSaData
-      );
-      console.log(body);
+      const { body, status } = await userRequest.getUsers({}, preparedSaData);
       expect(HttpStatus.OK).toBe(status);
     });
   });

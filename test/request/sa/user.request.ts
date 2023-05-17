@@ -8,7 +8,7 @@ import { paginationConstant } from '../../../libs/shared/pagination/query-parame
 import { TestsPaginationType } from '../../types/pagination.type';
 import { ViewPage } from '../../../libs/shared/pagination/view-page';
 import { ViewUser } from '../../../src/api/controllers/sa/users/response';
-import { getUrlWithQuery } from "../../helpers";
+import { getUrlWithQuery } from '../../helpers';
 
 export class UserRequest {
   constructor(private readonly server: any) {}

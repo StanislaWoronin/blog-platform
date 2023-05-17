@@ -18,7 +18,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "prisma:format": "yarn format --schema=libs/providers/prisma/schema.prisma",
+    "prisma:format": "yarn prisma format --schema=libs/providers/prisma/schema.prisma",
     "prisma:migrate": "yarn prisma migrate dev --name init --schema=libs/providers/prisma/schema.prisma",
     "migrate:reset": "yarn migrate reset --schema=libs/providers/prisma/schema.prisma",
     "prisma:studio": "yarn prisma studio --schema=libs/providers/prisma/schema.prisma",

@@ -1,1 +1,1 @@
-export * from './url-with-query'
+export * from './url-with-query';

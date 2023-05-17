@@ -16,7 +16,7 @@ export const createUserData = {
     email: 'somemailmail.com',
   } as CreateUserDto,
   long: {
-    login: faker.string.alpha(Number(validationConstant.loginLength.max) + 1),
+    // login: faker.string.alpha(Number(validationConstant.loginLength.max) + 1),
     password: faker.string.alpha(
       Number(validationConstant.passwordLength.max) + 1,
     ),

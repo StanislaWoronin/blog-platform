@@ -9,8 +9,9 @@ import { Transform } from 'class-transformer';
 
 export class CreateUserDto {
   @IsString()
-  @Transform(({ value }) => value?.trim())
-  //@Validate(LoginExistValidator)
+  @Transform(({ value }) => {
+    return value.trim();
+  })
   @Length(3, 10)
   login: string;
 
