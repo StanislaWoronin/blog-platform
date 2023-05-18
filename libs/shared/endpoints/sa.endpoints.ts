@@ -10,11 +10,11 @@ export const SaEndpoints = {
     return '';
   },
   updateBanStatus: (id: string, itUrl?: boolean) => {
-    const updateBanStatusUrl = `${id}/ban`;
+    const updateBanStatusEndpoint = `${id}/ban`;
     if (itUrl) {
-      return `/${baseSaUrl}/${updateBanStatusUrl}`;
+      return `/${baseSaUrl}/${updateBanStatusEndpoint}`;
     }
-    return updateBanStatusUrl;
+    return updateBanStatusEndpoint;
   },
   deleteUser: (id: string, itUrl?: boolean) => {
     const deleteUrl = `${id}`;

@@ -7,7 +7,7 @@ import { ProvidersModule } from '../providers/providers.module';
 import { USER_QUERIES_HANDLERS } from './aplication-services/queries';
 
 @Module({
-  imports: [CqrsModule, ProvidersModule],
+  imports: [CqrsModule],
   providers: [
     ...USER_COMMANDS_HANDLERS,
     ...USER_QUERIES_HANDLERS,

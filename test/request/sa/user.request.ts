@@ -50,6 +50,7 @@ export class UserRequest {
     };
 
     const url = getUrlWithQuery(SaEndpoints.getUsers(true), query);
+    console.log(url);
     const response = await request(this.server)
       .get(url)
       .auth(credential.login, credential.password, {

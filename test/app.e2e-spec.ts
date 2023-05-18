@@ -10,6 +10,7 @@ import {
 } from './prepared-data/prepared-sa.data';
 import { viewUser } from './expect-data';
 import { createApp } from '../src/create-app';
+import { TestingRequest } from "./request/tesing";
 
 describe('AppController (e2e)', () => {
   const second = 1000;
@@ -18,6 +19,7 @@ describe('AppController (e2e)', () => {
   let app: INestApplication;
   let server;
 
+  let testing: TestingRequest;
   let userRequest: UserRequest;
 
   beforeEach(async () => {
@@ -76,8 +78,10 @@ describe('AppController (e2e)', () => {
 
   describe(`"${SaEndpoints.create()}". Get users.`, () => {
     it(`Expect: ${HttpStatus.OK}. Return all user`, async () => {
-      const { body, status } = await userRequest.getUsers({}, preparedSaData);
+      const { body, status } = await userRequest.getUsers({searchLoginTerm: 'UserLogin'}, preparedSaData);
+      console.log(body)
       expect(HttpStatus.OK).toBe(status);
+
     });
   });
 });

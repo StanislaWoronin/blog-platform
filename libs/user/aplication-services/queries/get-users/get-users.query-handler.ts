@@ -12,7 +12,7 @@ export class GetUsersQueryHandler
   implements IQueryHandler<GetUsersQuery, ViewPage<ViewUser>>
 {
   private readonly logger = new Logger(GetUsersQueryHandler.name);
-  private readonly prisma = new PrismaClient();
+  private readonly prisma = new PrismaClient({log: ['query']});
 
   async execute({ queryDto }: GetUsersQuery): Promise<ViewPage<ViewUser>> {
     const filter = this.getFilter(queryDto);
