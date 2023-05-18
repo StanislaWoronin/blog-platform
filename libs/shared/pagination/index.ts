@@ -1,2 +1,2 @@
-export * from './page.dto'
-export * from './view-page'
+export * from './page.dto';
+export * from './view-page';

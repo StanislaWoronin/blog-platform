@@ -74,7 +74,7 @@ describe('AppController (e2e)', () => {
     });
   });
 
-  describe.skip(`"${SaEndpoints.create()}". Get users.`, () => {
+  describe(`"${SaEndpoints.create()}". Get users.`, () => {
     it(`Expect: ${HttpStatus.OK}. Return all user`, async () => {
       const { body, status } = await userRequest.getUsers({}, preparedSaData);
       expect(HttpStatus.OK).toBe(status);

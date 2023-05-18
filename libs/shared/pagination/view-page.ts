@@ -1,6 +1,6 @@
 import { PageDto } from './page.dto';
 import { ApiProperty } from '@nestjs/swagger';
-import { givePagesCount } from "./query-parameters";
+import { givePagesCount } from './query-parameters';
 
 export class ViewPage<I> {
   @ApiProperty()

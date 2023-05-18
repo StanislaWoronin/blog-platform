@@ -10,7 +10,7 @@ export class QueryDto {
         return giveSkipNumber(this.pageNumber, this.pageSize);
       },
       set(_val: string) {
-        throw Error(`Property "skip" are only getter.`);
+        throw Error(`Property "skip" are only getter. Don't set value ${_val}`);
       },
     });
   }
